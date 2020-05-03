@@ -1,0 +1,48 @@
+version: '3'
+# TODO: change all the default ports to improve security
+services:
+  # TODO: name of the project will be used in the command line
+  djangoapp:
+    build: .
+    volumes:
+    # TODO: volume mounting for syncing local repo to container
+      - .:/src
+      - ./static/:/static
+      - ./media/:/media
+    networks:  # <-- here
+      - nginx_network
+      - database1_network
+    depends_on: 
+      - database1
+
+  # TODO: small image size. check alphine
+  nginx:
+    image: nginx:1.13
+    ports:
+      - 8000:80
+    volumes:
+    # TODO: nginx mapping to loca folder
+      - ./config/nginx/conf.d:/etc/nginx/conf.d
+      - ./static/:/static
+      - ./media:/media
+    depends_on:
+      - djangoapp
+    networks:  # <-- maps to the network bridge setting
+      - nginx_network
+
+  database1:
+    image: postgres:10 # TODO: check alpine version fro small image size
+    env_file:
+      - config/db/database1_env
+    networks: 
+      - database1_network
+    volumes:
+      - ./data/database1_volume:/var/lib/postgresql/data
+
+
+networks:  # <-- and here
+  nginx_network:
+    driver: bridge
+  database1_network:
+    driver: bridge
+

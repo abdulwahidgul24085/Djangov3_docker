@@ -1,0 +1,7 @@
+asgiref
+Django
+gunicorn
+pytz
+sqlparse
+uuid
+psycopg2
