@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '*1)h4vcx%(f(@97tqqyl2zbt-iets8vfyaf)!u-&o%#-=!p61u'
+SECRET_KEY = 'nkcqdfg-_)=@e9oi_$jzn(mpon%zn$1&$e$y%6)7z(a1l=$pyp'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -83,10 +83,10 @@ WSGI_APPLICATION = 'app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'database1',
+        'NAME': 'django_db',
         'USER': 'awg',
         'PASSWORD': 'password',
-        'HOST': 'database1',  # <-- TODO:IMPORTANT: same name as docker-compose service!
+        'HOST': 'db',  # <-- TODO:IMPORTANT: same name as docker-compose service!
         'PORT': '5432',# TODO: remove default port to imporve security
     }
 }

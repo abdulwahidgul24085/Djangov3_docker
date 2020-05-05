@@ -1,3 +1,3 @@
 POSTGRES_USER=awg
 POSTGRES_PASSWORD=password
-POSTGRES_DB=database1
+POSTGRES_DB=django_db

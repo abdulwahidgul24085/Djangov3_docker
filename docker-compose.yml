@@ -2,14 +2,14 @@ version: '3'
 # TODO: change all the default ports to improve security
 services:
 
-  database1:
+  db:
     image: postgres:12.2-alpine # TODO: check alpine version fro small image size
     env_file:
-      - config/db/database1_env
+      - config/db/db_env
     networks: 
-      - database1_network
+      - db_network
     volumes:
-      - ./data/database1:/var/lib/postgresql/data
+      - ./data/db:/var/lib/postgresql/data
   # TODO: name of the project will be used in the command line
   djangoapp:
     build: .
@@ -20,9 +20,9 @@ services:
       - ./media/:/media
     networks:  # <-- here
       - nginx_network
-      - database1_network
+      - db_network
     depends_on: 
-      - database1
+      - db
 
   # TODO: small image size. check alphine
   nginx:
@@ -43,6 +43,6 @@ services:
 networks:  # <-- and here
   nginx_network:
     driver: bridge
-  database1_network:
+  db_network:
     driver: bridge
 
