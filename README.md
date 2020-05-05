@@ -82,7 +82,7 @@ For us to achive this, we set the nginx setting th config folder, and the yml fi
 Networking bridging allows us to use the multiple containers for the nginx if need, and the same bridging idea would be applicable when we link out databases.
 
 # Next todo for the repos
-1. Change the docker iamges to alpine for small image sizes
+1. ~~Change the docker iamges to alpine for small image sizes~~
 2. Buster vs Apline images on docker, which one are better?
 3. Creating a user in the Dockerfile, so the container is not functioning at the root. Which is security risk.
 4. Development and Production eviornment setting

@@ -3,7 +3,7 @@ version: '3'
 services:
 
   database1:
-    image: postgres:10 # TODO: check alpine version fro small image size
+    image: postgres:12.2-alpine # TODO: check alpine version fro small image size
     env_file:
       - config/db/database1_env
     networks: 
@@ -26,7 +26,7 @@ services:
 
   # TODO: small image size. check alphine
   nginx:
-    image: nginx:1.13
+    image: nginx:1.17.10-alpine
     ports:
       - 8000:80
     volumes:
