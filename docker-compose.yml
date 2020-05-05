@@ -4,6 +4,8 @@ services:
 
   db:
     image: postgres:12.2-alpine # TODO: check alpine version fro small image size
+    ports: 
+      - 5432:5432
     env_file:
       - config/db/db_env
     networks: 
