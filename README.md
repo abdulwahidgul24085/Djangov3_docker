@@ -50,6 +50,13 @@ If you have to run a command on the root folder use the 1st command, and if you 
 
 # Miscellaneous
 
+## DBBeaver
+Connecting postgres container to DBeaver. Use the the following settings
+1. HOST: localhost
+2. Database: Get it from the `db_env`
+3. User: Get it from the `db_env`
+4. Password: Get it from the `db_env`
+
 ## How to use docker
 To create a docker iamges we use the base `Dockerfile` as the main source. Additional resource will be added with the inclusion of the docker-compose file. The main `Dockerfile` provides us with the base on the container. 
 
@@ -64,12 +71,8 @@ Where `-t` is a flag to tag your image
 ## Gunicorn
 Since we are using the Gunicorn server and the not the base server. We have the following 2 commands working with gunicorn in django.
 
-`gunicorn --bind :8000 app.wsgi:application`
-This command needs to be run in the main django project where the `manage.py` file exsists.
----
-`gunicorn --chdir app --bind :8000 app.wsgi.application`
-This command is run from the root of the project, that is why we change directory to the django project.
----
+`gunicorn --bind :8000 app.wsgi:application` <-- This command needs to be run in the main django project where the `manage.py` file exsists.
+`gunicorn --chdir app --bind :8000 app.wsgi.application` <-- This command is run from the root of the project, that is why we change directory to the django project.
 
 # How to use Docker-Compose
 To use more then 1 service in docker, you need to create a `docker-compose.yml` file. This files has all the configurations. For this current project will use `nginx` for routing our traffic. 
@@ -81,11 +84,12 @@ For us to achive this, we set the nginx setting th config folder, and the yml fi
 
 Networking bridging allows us to use the multiple containers for the nginx if need, and the same bridging idea would be applicable when we link out databases.
 
+
 # Next todo for the repos
 1. ~~Change the docker iamges to alpine for small image sizes~~
-2. Buster vs Apline images on docker, which one are better?
+2. ~~Buster vs Apline images on docker, which one are better?~~
 3. Creating a user in the Dockerfile, so the container is not functioning at the root. Which is security risk.
 4. Development and Production eviornment setting
 5. move all the ports to the env varaible, or a single source to manipulate them.
 6. Right an inital script to check the folder structure is correct, for the docker-compose up --build to run.
-7. connecting postgres container with [DBBeaver](https://dbeaver.io/)
+7. ~~connecting postgres container with [DBBeaver](https://dbeaver.io/)~~
