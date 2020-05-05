@@ -88,3 +88,4 @@ Networking bridging allows us to use the multiple containers for the nginx if ne
 4. Development and Production eviornment setting
 5. move all the ports to the env varaible, or a single source to manipulate them.
 6. Right an inital script to check the folder structure is correct, for the docker-compose up --build to run.
+7. connecting postgres container with [DBBeaver](https://dbeaver.io/)
