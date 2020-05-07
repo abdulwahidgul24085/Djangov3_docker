@@ -24,7 +24,9 @@ In the `settings.py` contains your database name, username and password. That is
 
 ## Runing Django commands
 You can use the following code to run Django commands.
-``docker-compose run --rm djangoapp /bin/bash -c "cd app; ./manage.py "` <-- djangoapp is the same name that is set in the `docker-compose.yml` file under services. This need to be consistance since that is the name of your applicaiton. You can change that, but make sure that change is reflected when you are running this command. `--rm` Flag, this is what docker has to say about it.
+`docker-compose run --rm djangoapp /bin/bash -c "cd app; ./manage.py "` <-- djangoapp is the same name that is set in the `docker-compose.yml`.
+
+File under services. This need to be consistance since that is the name of your applicaiton. You can change that, but make sure that change is reflected when you are running this command. `--rm` Flag, this is what docker has to say about it.
 > Remove container after run. Ignored in detached mode.
 
 ### Django Create Super User
