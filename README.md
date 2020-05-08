@@ -24,7 +24,7 @@ In the `settings.py` contains your database name, username and password. That is
 
 ## Runing Django commands
 You can use the following code to run Django commands.
-`docker-compose run --rm djangoapp /bin/bash -c "cd app; ./manage.py "` <-- djangoapp is the same name that is set in the `docker-compose.yml`.
+`docker-compose run --rm djangoapp /bin/sh -c "cd app; ./manage.py "` <-- djangoapp is the same name that is set in the `docker-compose.yml`.
 
 File under services. This need to be consistance since that is the name of your applicaiton. You can change that, but make sure that change is reflected when you are running this command. `--rm` Flag, this is what docker has to say about it.
 > Remove container after run. Ignored in detached mode.
@@ -33,7 +33,7 @@ File under services. This need to be consistance since that is the name of your 
 `docker-compose run --rm djangoapp app/manage.py createsuperuser` <-- create admin user.
 
 ### Django Create Apps
-`docker-compose run --rm djangoapp /bin/bash -c "cd app; ./manage.py startapp django_app_name"` <-- We need to change into the app folder in the container. and run the command.
+`docker-compose run --rm djangoapp /bin/sh -c "cd app; ./manage.py startapp django_app_name"` <-- We need to change into the app folder in the container. and run the command.
 
 ### Django Make Migrations
 Make sure when you start an app, to always included it in the `settings.py`, or else the migrations won't work.
@@ -46,7 +46,7 @@ Make sure when you start an app, to always included it in the `settings.py`, or 
 
 ### Command Difference
 1. `docker-compose run --rm djangoapp app/manage.py`
-2. `docker-compose run --rm djangoapp /bin/bash -c "cd app; ./manage.py django_commads"`
+2. `docker-compose run --rm djangoapp /bin/sh -c "cd app; ./manage.py django_commads"`
 
 If you have to run a command on the root folder use the 1st command, and if you want to run the command on the django root project use the 2nd command.
 
