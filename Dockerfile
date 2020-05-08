@@ -20,4 +20,4 @@ COPY . /src
 
 EXPOSE 8000
 
-CMD ["gunicorn", "--chdir", "app", "--bind", ":8000", "app.wsgi:application"]
+CMD ["gunicorn", "--reload", "--chdir", "app", "--bind", ":8000", "app.wsgi:application"]
