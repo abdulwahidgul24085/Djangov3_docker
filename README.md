@@ -38,6 +38,7 @@ To run Django commands against the container. We can use the `docker-compose run
 4. `docker exec -it django_container_id ./manage.py makemigrations`
 5. `docker exec -it django_container_id ./manage.py migrate`
 6. `docker exec -it django_container_id ./manage.py createapp foo`
+
 You ge the idea.
 
 ### Docker-compose run
