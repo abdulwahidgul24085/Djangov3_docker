@@ -32,12 +32,12 @@ To run Django commands against the container. We can use the `docker-compose run
 3. The django command can be creating the super user.
 
 > Example for django commands.(Most common onces)
-`docker exec -it django_container_id ./manage.py collectstatic --no-input`
-`docker exec -it django_container_id ./manage.py createsuperusers`
-`docker exec -it django_container_id ./manage.py showmigrations`
-`docker exec -it django_container_id ./manage.py makemigrations`
-`docker exec -it django_container_id ./manage.py migrate`
-`docker exec -it django_container_id ./manage.py createapp foo`
+1. `docker exec -it django_container_id ./manage.py collectstatic --no-input`
+2. `docker exec -it django_container_id ./manage.py createsuperuser`
+3. `docker exec -it django_container_id ./manage.py showmigrations`
+4. `docker exec -it django_container_id ./manage.py makemigrations`
+5. `docker exec -it django_container_id ./manage.py migrate`
+6. `docker exec -it django_container_id ./manage.py createapp foo`
 You ge the idea.
 
 ### Docker-compose run
