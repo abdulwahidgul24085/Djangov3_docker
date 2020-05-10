@@ -1,1 +1,7 @@
-notes/
+data/*
+docker-compose.yml
+Dockerfile
+README.md
+.vscode
+.git
+.gitignore

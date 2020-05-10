@@ -23,32 +23,27 @@ The database, static, and media configuration has been set in the base docker-co
 In the `settings.py` contains your database name, username and password. That is imported from `config/db/django_databae1_env` in the docker-compose file, and as set in the Django project. You need to make sure you change the `env` and `settings.py database` values to have a different settings
 
 ## Runing Django commands
-You can use the following code to run Django commands.
-`docker-compose run --rm djangoapp /bin/sh -c "cd app; ./manage.py "` <-- djangoapp is the same name that is set in the `docker-compose.yml`.
+To run Django commands against the container. We can use the `docker-compose run` command for we can use the `docker exec` command.
 
-File under services. This need to be consistance since that is the name of your applicaiton. You can change that, but make sure that change is reflected when you are running this command. `--rm` Flag, this is what docker has to say about it.
-> Remove container after run. Ignored in detached mode.
+### Docker EXEC command
+`docker exec -it django_container_id ./manage.py django_command`
+1. The django command can be creating a new app.
+2. The django command can be running migrations.
+3. The django command can be creating the super user.
 
-### Django Create Super User
-`docker-compose run --rm djangoapp app/manage.py createsuperuser` <-- create admin user.
+> Example for django commands.(Most common onces)
+`docker exec -it django_container_id ./manage.py collectstatic --no-input`
+`docker exec -it django_container_id ./manage.py createsuperusers`
+`docker exec -it django_container_id ./manage.py showmigrations`
+`docker exec -it django_container_id ./manage.py makemigrations`
+`docker exec -it django_container_id ./manage.py migrate`
+`docker exec -it django_container_id ./manage.py createapp foo`
+You ge the idea.
 
-### Django Create Apps
-`docker-compose run --rm djangoapp /bin/sh -c "cd app; ./manage.py startapp django_app_name"` <-- We need to change into the app folder in the container. and run the command.
-
-### Django Make Migrations
-Make sure when you start an app, to always included it in the `settings.py`, or else the migrations won't work.
-`docker-compose run --rm djangoapp app/manage.py showmigrations` <-- To show the migrations
-`docker-compose run --rm djangoapp app/manage.py makemigrations` <-- To initiate the migrations, does not actually make it
-`docker-compose run --rm djangoapp app/manage.py migrate` <-- To actually make the migraitons
-
-### Django Static files
-`docker-compose run --rm djangoapp app/manage.py collectstatic --no-input` this will create the static file for you. If you don't set this your static files in django will not run. You will see a broken css, js when you go to the admin section. 
-
-### Command Difference
-1. `docker-compose run --rm djangoapp app/manage.py`
-2. `docker-compose run --rm djangoapp /bin/sh -c "cd app; ./manage.py django_commads"`
-
-If you have to run a command on the root folder use the 1st command, and if you want to run the command on the django root project use the 2nd command.
+### Docker-compose run
+My docker-compose command sometimes run, and sometimes doesn't. This is due my lack of experince of using docker-compose. I will update this README.md file once I find out what am I doing wrong. For now following is the docker-compose version of running that command.
+`docker-compose run --rm djangoaapp ./manage.py django_command`
+We use the `--rm` flag to remove the container once the command has ran. The djangoapp name is the name of the web service in the docker-compose.yml file.
 
 # Miscellaneous
 

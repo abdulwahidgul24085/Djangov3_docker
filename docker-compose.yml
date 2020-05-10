@@ -1,7 +1,6 @@
 version: '3'
 # TODO: change all the default ports to improve security
 services:
-
   db:
     image: postgres:12.2-alpine # TODO: check alpine version fro small image size
     ports: 
@@ -12,12 +11,13 @@ services:
       - db_network
     volumes:
       - ./data/db:/var/lib/postgresql/data
+  
   # TODO: name of the project will be used in the command line
   djangoapp:
     build: .
     volumes:
     # TODO: volume mounting for syncing local repo to container
-      - .:/src
+      - ./app/:/src
       - ./static/:/static
       - ./media/:/media
     networks:  # <-- here

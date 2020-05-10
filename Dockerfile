@@ -8,15 +8,18 @@ WORKDIR /src
 
 COPY requirements.txt /src/requirements.txt
 
-RUN \
- apk add --no-cache postgresql-libs && \
- apk add --no-cache --virtual .build-deps gcc musl-dev postgresql-dev && \
- python3 -m pip install -r requirements.txt --no-cache-dir && \
- apk --purge del .build-deps
-# RUN pip install gunicorn django
-# RUN pip install -r requirements.txt
+# To install postgres and Pillow dependencies
+RUN apk update \
+    && apk add --virtual build-deps gcc python3-dev musl-dev \
+    && apk add postgresql \
+    && apk add postgresql-dev \
+    && pip install psycopg2 \
+    && apk add jpeg-dev zlib-dev libjpeg \
+    && pip install Pillow \
+    && pip install -r requirements.txt \
+    && apk del build-deps
 
-COPY . /src
+COPY app/ /src
 
 EXPOSE 8000
 
