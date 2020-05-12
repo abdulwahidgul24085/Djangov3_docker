@@ -1,7 +1,4 @@
-asgiref
-Django
-gunicorn
-pytz
-sqlparse
-uuid
-psycopg2
+django==3.0.3
+gunicorn==20.0.4
+psycopg2==2.8.5
+Pillow==7.1.2
