@@ -85,8 +85,8 @@ Networking bridging allows us to use the multiple containers for the nginx if ne
 
 # Next todo for the repos
 1. ~~Change the docker iamges to alpine for small image sizes~~
-2. ~~Buster vs Apline images on docker, which one are better?~~
-~~3. Creating a user in the Dockerfile, so the container is not functioning at the root. Which is security risk.~~
+2. ~~Buster vs Apline images on docker, which one are better?.~~
+3. ~~Creating a user in the Dockerfile, so the container is not functioning at the root. Which is security risk.~~
 4. Development and Production eviornment setting.
 5. move all the ports to the env varaible, or a single source to manipulate them.
 6. Right an inital script to check the folder structure is correct, for the docker-compose up --build to run.
