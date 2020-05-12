@@ -1,25 +1,32 @@
-# TODO: apline version, for small container size
 FROM python:3.8.2-alpine3.11
 
-# TODO: add a continaer user to avoid using root in container
-RUN mkdir -p /src
+# Keeps Python from generating .pyc files in the container
+ENV PYTHONDONTWRITEBYTECODE 1
 
-WORKDIR /src
+# Turns off buffering for easier container logging
+ENV PYTHONUNBUFFERED 1
 
-COPY requirements.txt /src/requirements.txt
+ADD requirements.txt .
 
-# To install postgres and Pillow dependencies
-RUN apk update \
-    && apk add --virtual build-deps gcc python3-dev musl-dev \
-    && apk add postgresql \
-    && apk add postgresql-dev \
-    && pip install psycopg2 \
-    && apk add jpeg-dev zlib-dev libjpeg \
-    && pip install Pillow \
-    && pip install -r requirements.txt \
-    && apk del build-deps
+RUN apk update
+# Postgresql Dependencies for ti to functiona normal
+RUN apk add --virtual build-deps gcc python3-dev musl-dev 
+RUN apk add postgresql 
+RUN apk add postgresql-dev 
+# RUN  pip install psycopg2 
+# Pillow dependencies for it to function normal
+RUN apk add jpeg-dev zlib-dev libjpeg  
+# RUN  pip install Pillow 
+RUN pip install -r requirements.txt 
+RUN apk del build-deps
 
-COPY app/ /src
+
+WORKDIR /home/src
+ADD . /home/src
+
+# RUN useradd awg && chown -R awg /home/src
+RUN adduser -D awg && chown -R awg /home/
+USER awg
 
 EXPOSE 8000
 
