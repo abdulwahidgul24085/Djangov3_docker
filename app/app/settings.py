@@ -131,7 +131,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # TODO:Static file root setting
-STATIC_ROOT = os.path.join(os.path.dirname(os.path.dirname(BASE_DIR)), 'static')
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR)), 'static')
 
 # TODO:Medai file roort setting
-MEDIA_ROOT = os.path.join(os.path.dirname(os.path.dirname(BASE_DIR)), 'media')
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR)), 'media')
